@@ -22,7 +22,7 @@
 
 
              <div class="form-group{{ $errors->has('hour') ? ' has-error' : '' }}">
-                <label for="hour" class="col-sm-5 control-label">Hour:</label>
+                <label for="hour" class="col-sm-5 control-label">Appointment hour:</label>
 
                 <div class="col-sm-2">
                     <input type="text" name="hour" id="hour" class="form-control" value="{{ old('hour') }}">
