@@ -39,20 +39,20 @@ class AppointmentController extends Controller
 
     public function appointmentStore(Request $request)
     {
-    	$this->validate($request,[
+    	// $this->validate($request,[
                 
-                'hour'  => 'required',
-                'status'  => 'required',
-                'doctor_id' => 'numeric',
+     //            'hour'  => 'required',
+     //            'status'  => 'required',
+     //            'doctor_id' => 'numeric',
                 
-            ]);
+     //        ]);
 
             $appointment = Auth::user()->appointments()->create([
 
                     'user_id'=> Auth::user()->id,
                     'doctor_id'=>Input::get('doctor'),
                     'hour' => Input::get('hour'),
-                    'status' => Input::get('Pending'),
+                    'status' => Input::get('status'),
                     
                 ]);
         

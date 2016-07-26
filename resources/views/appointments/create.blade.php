@@ -24,8 +24,11 @@
              <div class="form-group{{ $errors->has('hour') ? ' has-error' : '' }}">
                 <label for="hour" class="col-sm-5 control-label">Appointment hour:</label>
 
-                <div class="col-sm-2">
-                    <input type="text" name="hour" id="hour" class="form-control" value="{{ old('hour') }}">
+                <div class="col-sm-2 input-group date" id='hour'>
+                    <input type="text" name="hour"  class="form-control" value="{{ old('hour') }}">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                     @if ($errors->has('hour'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('hour') }}</strong>
@@ -35,12 +38,14 @@
             </div>
 
 
+
+
             <div class="form-group">
                 <label for="status" class="col-sm-5 control-label">Status:</label>
 
                 <div class="col-sm-2">
-                    <select  class="form-control" disabled>
-                        <option>Pending</option>
+                    <select name="status" class="form-control">
+                        <option value="Pending">Pending</option>
                     </select>
                 </div>
             </div>
