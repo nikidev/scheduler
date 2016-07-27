@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/calendar', function () {
+    return view('calendar');
+});
+
 Route::get('/', function () {
 		if (Auth::check()) {
 			return redirect('/home');
@@ -35,3 +39,12 @@ Route::post('appointment/store','AppointmentController@appointmentStore');
 Route::get('appointment/delete/{id}','AppointmentController@appointmentDelete');
 Route::get('appointment/edit/{id}','AppointmentController@viewEditAppointment');
 Route::put('appointment/update/{id}','AppointmentController@appointmentUpdate');
+
+
+
+Route::get('users', 'UserController@viewUsersList');
+Route::get('user/delete/{id}','UserController@deleteUser');
+Route::get('user/edit/{id}','UserController@viewEditUser');
+Route::put('user/update/{id}','UserController@userUpdate');
+Route::get('user/create','UserController@viewCreateUser');
+Route::post('user/store','UserController@userStore');

@@ -16,6 +16,8 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <link href="{{ asset('/css/app-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-switch.css') }}"rel="stylesheet" >
+    <link href="{{ asset('css/fullcalendar.css') }}"rel="stylesheet" >
     
 
 
@@ -45,7 +47,17 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    @if(!Auth::guest())
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                    @endif
+                    
+                    @if(!Auth::guest())
+                        <li><a href="{{ url('/calendar') }}">Calendar view</a></li>
+                    @endif
+
+                    @if(!Auth::guest() && Auth::user()->isAdmin)
+                        <li><a href="{{ url('/users') }}">Users</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -78,15 +90,17 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 
-
     {{--  <script type="text/javascript" src="{{ asset('/bower_components/jquery/jquery.min.js') }}"></script> --}}
       <script type="text/javascript" src="{{ asset('/bower_components/moment/min/moment.min.js') }}"></script>
      {{--  <script type="text/javascript" src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script> --}}
       <script type="text/javascript" src="{{ asset('/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <script type="text/javascript" src="{{ asset('js/datetimepicker.js') }}"></script>
 
-
-     
-     <script type="text/javascript" src="{{ asset('js/datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-switch.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/deleteModal.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fullcalendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/myCalendar.js') }}"></script>
 </body>
 </html>

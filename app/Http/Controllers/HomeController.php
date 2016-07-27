@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Appointment;
+
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')
+        ->with ('appointments', Appointment::all())
+        ->with ('doctors', User::where('isDoctor', '=', '1')->get());
     }
 }

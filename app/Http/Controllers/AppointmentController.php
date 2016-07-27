@@ -24,35 +24,42 @@ class AppointmentController extends Controller
 
     public function viewAppointmentsList()
     {
-    	$appointments = Appointment::all();
-
+        
+    	
     	return view('home')
-    		->with ('appointments',$appointments);
+    		->with ('appointments', Appointment::all())
+            ->with ('doctors', User::where('isDoctor', '=', '1')->get());
     }
 
     public function viewCreateAppointment()
     {
-    	return view('appointments.create')
-            ->with ('users', User::where('isDoctor', '=', '1')->get());
+        if(Auth::user()->isDoctor && !Auth::user()->isAdmin)
+        {
+            return view('home');
+        }
+        else
+        {
+            return view('appointments.create')
+                ->with ('users', User::where('isDoctor', '=', '1')->get());
+        }        
     }
 
 
     public function appointmentStore(Request $request)
     {
-    	// $this->validate($request,[
+    	$this->validate($request,[
                 
-     //            'hour'  => 'required',
-     //            'status'  => 'required',
-     //            'doctor_id' => 'numeric',
+                'hour'  => 'required',
+                'doctor_id' => 'numeric',
                 
-     //        ]);
+            ]);
 
             $appointment = Auth::user()->appointments()->create([
 
                     'user_id'=> Auth::user()->id,
                     'doctor_id'=>Input::get('doctor'),
                     'hour' => Input::get('hour'),
-                    'status' => Input::get('status'),
+                    'status' => Input::get('status','Pending'),
                     
                 ]);
         
@@ -76,7 +83,7 @@ class AppointmentController extends Controller
 
         return view('appointments.edit')
         ->with('appointment',$appointment)
-        ->with('users', User::all());
+        ->with ('users', User::where('isDoctor', '=', '1')->get());
     }
 
 
@@ -85,19 +92,18 @@ class AppointmentController extends Controller
     	$this->validate($request,[
                 
                 'hour'  => 'required',
-                'status'  => 'required',
                 'doctor_id' => 'numeric',
                 
             ]);
         
-        $article = Article::where('id',$id)->update([
+        $appointment = Appointment::where('id',$id)->update([
                  
                  'doctor_id'=>Input::get('doctor'),
                  'hour' => Input::get('hour'),
-                 'status' => Input::get('status'),
+                 'status' => Input::get('status','Pending'),
             ]);
 
 
-    	return redirect('/articles');
+    	return redirect('/appointments');
     }
 }

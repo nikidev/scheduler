@@ -42,14 +42,14 @@
 
             <div class="form-group">
                 <label for="status" class="col-sm-5 control-label">Status:</label>
-
                 <div class="col-sm-2">
-                    <select name="status" class="form-control">
-                        <option value="Pending">Pending</option>
+                    <select  disabled class="form-control">
+                        <option>Pending</option>
                     </select>
                 </div>
             </div>
-
+            
+            
 
                           
             <div class="form-group">

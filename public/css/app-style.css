@@ -5,3 +5,21 @@ body {
 .fa-btn {
     margin-right: 6px;
 }
+
+
+.error-404{
+	text-align: center;
+	margin:5px;
+}
+
+.error-404-container{
+	 margin: 0 auto;
+    width: 100%;
+    padding: 140px;
+}
+
+
+#calendar{
+	margin:0 auto;
+	width: 50%;
+}
