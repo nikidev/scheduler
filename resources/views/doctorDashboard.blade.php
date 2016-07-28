@@ -36,9 +36,15 @@
 
 	                                <td>
 	                                   <select name="status" class="form-control">
-	                                   		<option value="{{ $appointment->status }}">{{ $appointment->status }}</option>
-	                                   		<option value="Approved">Approved</option>
-	                                   		<option value="Not Approved">Not Approved</option>
+	                                   		@if($appointment->status == "Pending")
+	                                   			<option selected="true" value="{{ $appointment->status }}">{{ $appointment->status }}</option>
+	                                   			<option value="Approved">Approved</option>
+		                                   		<option value="Not Approved">Not Approved</option>
+	                                   		@else
+		                                   		<option value="Approved">Approved</option>
+		                                   		<option value="Not Approved">Not Approved</option>
+		                                   		<option value="Pending">Pending</option>
+	                                   		@endif
 	                                   </select>
 	                                </td>
 	                            </tr>
