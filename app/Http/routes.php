@@ -11,25 +11,39 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/calendar', function () {
     return view('calendar');
-});
+})->middleware('auth');
 
 Route::get('/', function () {
-		if (Auth::check()) {
-			return redirect('/home');
-		} else {
+		if (Auth::check()) 
+		{
+			if(Auth::user()->isDoctor)
+			{
+				return redirect('doctor/dashboard');
+			}
+			else
+			{
+				return redirect('/home');
+			}
+			
+		} 
+		else 
+		{
 			return view('auth.login');
 		}
 	});
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
+Route::get('doctor/dashboard','DoctorDashBoardController@viewRequests');
+
+Route::get('/home', 'AppointmentController@viewAppointmentsList');
+
+
 
 
 

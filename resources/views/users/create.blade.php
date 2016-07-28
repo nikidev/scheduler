@@ -53,7 +53,7 @@
                     <label for="group" class="col-sm-3 control-label">Choose admin role to be:</label>
 
                     <div class="col-sm-6">
-                        <input type="checkbox" name="isAdmin"  value="{{ Auth::user()->isAdmin }}">
+                        <input type="checkbox" name="isAdmin"  value="{{ 1 }}">
                     </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <label for="group" class="col-sm-3 control-label">Choose doctor role to be:</label>
 
                     <div class="col-sm-6">
-                        <input type="checkbox" name="isDoctor"  value="{{ Auth::user()->isDoctor }}">
+                        <input type="checkbox" name="isDoctor"  value="{{ 1 }}">
                     </div>
             </div>
            

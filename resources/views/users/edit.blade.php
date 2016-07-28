@@ -28,7 +28,7 @@
                     @if(in_array($user->isAdmin, $selectedRole))
                       <input type="checkbox" name="isAdmin"  value="{{ $user->isAdmin }}" checked>
                     @else
-                        <input type="checkbox" name="isAdmin"  value="{{ Auth::user()->isAdmin }}">
+                        <input type="checkbox" name="isAdmin"  value="{{ 1 }}">
                     @endif
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     @if(in_array($user->isDoctor, $selectedRole))
                       <input type="checkbox" name="isDoctor"  value="{{ $user->isDoctor }}" checked>
                     @else
-                        <input type="checkbox" name="isDoctor"  value="{{ Auth::user()->isDoctor }}">
+                        <input type="checkbox" name="isDoctor"  value="{{ 1 }}">
                     @endif
                 </div>
             </div>
