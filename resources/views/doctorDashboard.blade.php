@@ -35,17 +35,27 @@
 	                                <td>{{ $appointment->hour }} </td>
 
 	                                <td>
-	                                   <select name="status" class="form-control">
-	                                   		@if($appointment->status == "Pending")
-	                                   			<option selected="true" value="{{ $appointment->status }}">{{ $appointment->status }}</option>
-	                                   			<option value="Approved">Approved</option>
-		                                   		<option value="Not Approved">Not Approved</option>
-	                                   		@else
-		                                   		<option value="Approved">Approved</option>
-		                                   		<option value="Not Approved">Not Approved</option>
-		                                   		<option value="Pending">Pending</option>
-	                                   		@endif
-	                                   </select>
+									
+										<form action="{{ url('appointment/update/'.$appointment->id) }}" method="POST" id="changeStatusForm" onchange="changeStatus()" class="form-horizontal">
+	            
+									            {{ method_field('PUT') }}
+									            {!! csrf_field() !!}
+
+			                                   <select name="status" id="selectStatus" class="form-control">
+			                                   		@if($appointment->status == "Pending")
+			                                   			<option selected="true" value="{{ $appointment->status }}">{{ $appointment->status }}</option>
+			                                   			<option value="Approved">Approved</option>
+				                                   		<option value="Not Approved">Not Approved</option>
+			                                   		@else
+				                                   		<option value="Approved">Approved</option>
+				                                   		<option value="Not Approved">Not Approved</option>
+				                                   		<option value="Pending">Pending</option>
+			                                   		@endif
+			                                   </select>
+		                                 </form>
+
+		                                 <p id="demo"></p>
+
 	                                </td>
 	                            </tr>
 	                        @endforeach

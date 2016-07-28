@@ -102,5 +102,6 @@
     <script type="text/javascript" src="{{ asset('js/deleteModal.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/fullcalendar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/myCalendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/statusChanger.js') }}"></script>
 </body>
 </html>
