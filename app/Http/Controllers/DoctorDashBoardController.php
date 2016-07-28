@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Appointment;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorDashBoardController extends Controller
 {
@@ -22,7 +23,7 @@ class DoctorDashBoardController extends Controller
 		$user = User::all();
 
 		return view('doctorDashboard')
-			->with ('appointments', Appointment::all())
+			->with ('appointments', Appointment::where('doctor_id','=', Auth::user()->id)->get())
 			 ->with ('doctors', User::where('isDoctor', '=', '1')->get());
 	}
 }
