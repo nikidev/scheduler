@@ -62,3 +62,7 @@ Route::get('user/edit/{id}','UserController@viewEditUser');
 Route::put('user/update/{id}','UserController@userUpdate');
 Route::get('user/create','UserController@viewCreateUser');
 Route::post('user/store','UserController@userStore');
+
+
+
+Route::put('doctor/appointment/update/{id}','DoctorDashBoardController@doctorAppointmentUpdate');

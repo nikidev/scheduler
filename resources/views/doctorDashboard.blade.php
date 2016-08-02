@@ -36,7 +36,7 @@
 
 	                                <td>
 									
-										<form action="{{ url('appointment/update/'.$appointment->id) }}" method="POST" id="changeStatusForm" onchange="changeStatus()" class="form-horizontal">
+										<form action="{{ url('doctor/appointment/update/'.$appointment->id) }}" method="POST" id="changeStatusForm" onchange="changeStatus()" class="form-horizontal">
 	            
 									            {{ method_field('PUT') }}
 									            {!! csrf_field() !!}
@@ -52,9 +52,11 @@
 				                                   		<option value="Pending">Pending</option>
 			                                   		@endif
 			                                   </select>
+
+			                                   
 		                                 </form>
 
-		                                 <p id="demo"></p>
+		                                 <p id="showStatus"></p>
 
 	                                </td>
 	                            </tr>
