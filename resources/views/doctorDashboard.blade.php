@@ -40,17 +40,19 @@
 	            
 									            {{ method_field('PUT') }}
 									            {!! csrf_field() !!}
-
+												
 			                                   <select name="status" id="selectStatus" class="form-control">
+			                                   		<option selected="true" value="{{ $appointment->status }}">{{ $appointment->status }}</option>
 			                                   		@if($appointment->status == "Pending")
-			                                   			<option selected="true" value="{{ $appointment->status }}">{{ $appointment->status }}</option>
 			                                   			<option value="Approved">Approved</option>
 				                                   		<option value="Not Approved">Not Approved</option>
-			                                   		@else
-				                                   		<option value="Approved">Approved</option>
+			                                   		@elseif($appointment->status == "Approved")
 				                                   		<option value="Not Approved">Not Approved</option>
 				                                   		<option value="Pending">Pending</option>
-			                                   		@endif
+			                                   		@elseif($appointment->status == "Not Approved")
+			                                   			<option value="Approved">Approved</option>
+														<option value="Pending">Pending</option>
+													@endif
 			                                   </select>
 
 			                                   
