@@ -36,7 +36,7 @@
 
 	                                <td>
 									
-										<form action="{{ url('doctor/appointment/update/'.$appointment->id) }}" method="POST" id="changeStatusForm" onchange="changeStatus()" class="form-horizontal">
+										<form action="{{ url('doctor/appointment/update/'.$appointment->id) }}" method="POST" id="changeStatusForm{{ $appointment->id }}" onchange="changeStatus({{ $appointment->id }})" class="form-horizontal">
 	            
 									            {{ method_field('PUT') }}
 									            {!! csrf_field() !!}
@@ -52,10 +52,12 @@
 			                                   		@elseif($appointment->status == "Not Approved")
 			                                   			<option value="Approved">Approved</option>
 														<option value="Pending">Pending</option>
+													@elseif($appointment->status != "Pending" && $appointment->status != "Not Approved" && $appointment->status != "Approved")
+														<option value="Approved">Approved</option>
+			                                   			<option value="Not Approved">Not Approved</option>
+														<option value="Pending">Pending</option>
 													@endif
 			                                   </select>
-
-			                                   
 		                                 </form>
 
 		                                 <p id="showStatus"></p>
